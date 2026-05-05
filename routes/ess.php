@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\Ess\DashboardController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/ess', function () {
-    return 'HRMIS KC ESS Area';
-})->name('ess.dashboard');
+Route::get('/ess', [DashboardController::class, 'index'])
+    ->name('ess.dashboard');

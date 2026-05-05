@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/admin', function () {
-    return 'HRMIS KC Admin Area';
-})->name('admin.dashboard');
+Route::get('/admin', [DashboardController::class, 'index'])
+    ->name('admin.dashboard');
