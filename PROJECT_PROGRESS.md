@@ -113,6 +113,30 @@
 | BRANCH-11 | Branch model shall not include employeeJobs relationship yet until EmployeeJob model/table exists. |
 
 ---
+
+## Locked Employee Table Rules
+
+| Rule ID | Rule |
+|---|---|
+| EMP-TABLE-01 | `employees` table shall use ULID primary key. |
+| EMP-TABLE-02 | `employees.user_id` shall be nullable because an employee record may exist before account activation. |
+| EMP-TABLE-03 | `employee_number` shall be unique and used as the official internal employee identifier. |
+| EMP-TABLE-04 | `personal_email` and `work_email` shall be stored separately and both shall be nullable unique. |
+| EMP-TABLE-05 | `ic_number` shall be nullable unique for Malaysian employee identification. |
+| EMP-TABLE-06 | `employees` table shall reference `employment_statuses`, `branches`, `departments`, `positions`, and `job_grades`. |
+| EMP-TABLE-07 | `reporting_manager_id` shall be nullable and shall self-reference `employees.id`. |
+| EMP-TABLE-08 | `profile_photo_document_id` shall not be added yet until `employee_documents` table exists. |
+| EMP-TABLE-09 | Employee model shall only include relationships for tables/models that already exist in the current phase. |
+| EMP-TABLE-10 | Employee 360, Employee Documents, Employee Job History, Salary History and Leave relationships shall be added later in their own modules. |
+| EMP-TABLE-11 | `employees` table shall include migration tracking fields: `is_migrated`, `source_type`, and `migrated_at`. |
+| EMP-TABLE-12 | `employees` table shall support active/inactive status using `is_active`. |
+| EMP-TABLE-13 | `employees` table shall support soft deletes. |
+| EMP-TABLE-14 | `joined_date` shall be used instead of `hire_date`. |
+| EMP-TABLE-15 | `work_email` shall be used instead of `company_email`. |
+| EMP-TABLE-16 | `mobile_phone` shall be used for employee mobile contact number. |
+
+---
+
 ## Phase 01 - Project Foundation
 
 | Step | Description | Status |
@@ -174,6 +198,17 @@ Step 36: Update PROJECT_PROGRESS.md with locked Employee Core foundation rules.
 | 48 | Verify all master data tables and relationships | PASS |
 
 Step 49: Update PROJECT_PROGRESS.md with Master Data Foundation progress.
+
+| 52A | Analyze and align previous Employee migration and model | PASS |
+| 52B | Analyze and lock Employee Table rules | PASS |
+| 53 | Create employees table migration and Employee model | PASS with fix |
+| 53A | Fix employees self-reference foreign key and migrate table | PASS |
+| 54 | Verify Employee model and relationships | PASS |
+| 55 | Create EmployeeSeeder and seed initial employees | PASS |
+| 56 | Link Super Admin test user to employee record | PASS |
+| 57 | Add and verify User to Employee relationship | PASS |
+
+Step 58: Update PROJECT_PROGRESS.md with Employee Core Table progress.
 
 ---
 
